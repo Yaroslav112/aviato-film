@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { GlobalStyle } from './modules/global-styles';
+import Series from './modules/series';
+import Cartoons from './modules/cartoons';
+import Movies from './modules/movies';
+import TopImdb from './modules/top-imdb';
+import NotFound from './library/components/not-found';
+import { ROUTES } from './library/constants/routes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GlobalStyle />
+      <Router>
+        <Routes>
+          <Route path={ROUTES.MAIN_PAGE} element={<Movies />} />
+          <Route path={ROUTES.MOVIES} element={<Movies />} />
+          <Route path={ROUTES.SERIES} element={<Series />} />
+          <Route path={ROUTES.CARTOONS} element={<Cartoons />} />
+          <Route path={ROUTES.TOP_100} element={<TopImdb />} />
+          <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
