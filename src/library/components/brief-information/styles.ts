@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Colors } from '../../constants/colors';
-import { Question } from '../../../assets/question';
 
 export const BriefInformationContainer = styled.div`
   background-color: ${Colors.black1};
@@ -27,4 +26,3 @@ export const RatingContainer = styled.div`
   display: flex;
   align-items: center;
 `
-

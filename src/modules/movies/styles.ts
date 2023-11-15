@@ -1,5 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Colors } from '../../library/constants/colors';
+
+const rotateSpinnerAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const NavContainer = styled.div`
   background-color: ${Colors.black};
@@ -58,16 +67,22 @@ export const LoadMoreButtonContainer = styled.div`
 `
 
 export const LoadMoreButton = styled.button`
+  background: ${( { disabled } ) => (disabled ? '' : `${Colors.buttonGradient}`)};
   padding: 10px;
   width: 200px;
   border-radius: 5px;
-  background: ${Colors.buttonGradient};
   color: ${Colors.white};
   border: none;
-  cursor: pointer;
+  cursor: ${( { disabled } ) => (disabled ? 'not-allowed' : 'pointer')};
   font-size: 20px;
   margin-bottom: 100px;
 `
+
+export const SpinnerContainer = styled.div`
+  animation: ${rotateSpinnerAnimation} 4s infinite linear;
+  width: 50px;
+`;
+
 
 
 

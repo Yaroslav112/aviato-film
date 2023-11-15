@@ -17,11 +17,6 @@ export interface MovieDataTypes {
   vote_count?: number
 }
 
-export type Movie = {
-  movie: MovieDataTypes
-}
-
-
 export interface ResponsePropTypes {
   id: number;
   title: string;

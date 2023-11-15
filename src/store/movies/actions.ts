@@ -16,7 +16,7 @@ export const fetchAllMoviesSuccess = (movies: MovieDataTypes) => ({
   movies,
 });
 
-export const fetchAllMoviesFailure = (error: any) => ({
+export const fetchAllMoviesFailure = (error: Error | unknown) => ({
   type: FETCH_ALL_MOVIES_FAILURE,
   error,
 });

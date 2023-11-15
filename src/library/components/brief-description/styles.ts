@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-interface ContainerTypes {
-  isDescriptionShown: boolean;
-}
-
-export const Container = styled.span<ContainerTypes>`
+export const Container = styled.span`
   position: relative;
   top: 100px;
 `

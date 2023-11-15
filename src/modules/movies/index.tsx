@@ -8,7 +8,7 @@ import {
   LoadMoreButtonContainer,
   MovieContainer,
   MovieTitle,
-  NavContainer
+  NavContainer,
 } from './styles';
 import { getMovies as getMoviesSelector } from '../../store/movies/selectors';
 import { fetchAllMoviesRequest, resetMovies } from '../../store/movies/actions';
@@ -16,15 +16,18 @@ import { MovieProps } from './types';
 import { MovieDataTypes } from '../../store/movies/types';
 import BriefDescription from '../../library/components/brief-description';
 import Header from '../../library/components/header';
+import { SpinnerIcon } from '../../assets/spinner';
 
-const Movies: FC = () => {
+const Movies:FC = () => {
   const movies: MovieDataTypes[] = useSelector(getMoviesSelector);
   const [nextPage, setNextPage] = useState(2);
+  const [isMoviesLoading, setIsMoviesLoading] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
 
   useEffect(() => {
-    dispatch(resetMovies())
+    dispatch(resetMovies());
+    // dispatch(fetchAllMoviesRequest({ page: 1 }))
   }, [location.pathname]);
 
   useEffect(() => {
@@ -33,8 +36,15 @@ const Movies: FC = () => {
   }, []);
 
   const getMoreMovies = () => {
-    setNextPage(nextPage + 1);
-    dispatch(fetchAllMoviesRequest({ page: nextPage }));
+    if (!isMoviesLoading) {
+      setIsMoviesLoading(true);
+      setNextPage(nextPage + 1);
+
+      setTimeout(() => {
+        dispatch(fetchAllMoviesRequest({ page: nextPage }));
+        setIsMoviesLoading(false);
+      }, 1000);
+    }
   };
 
   return (
@@ -45,7 +55,7 @@ const Movies: FC = () => {
       <MovieContainer>
         {movies?.length ? (
           // todo used index instead of id due to api problems
-          movies?.map((movie: MovieProps, index: Key ) => (
+          movies?.map((movie: MovieProps, index: Key) => (
             <ImgContainer key={index}>
               <BriefDescription movie={movie} />
               <Image
@@ -55,12 +65,12 @@ const Movies: FC = () => {
               <MovieTitle>{movie?.original_title}</MovieTitle>
             </ImgContainer>
           ))
-        ) : (
-          <p>No movies available.</p>
-        )}
+        ) :  <SpinnerIcon />}
       </MovieContainer>
       <LoadMoreButtonContainer>
-        <LoadMoreButton onClick={getMoreMovies}>Load More</LoadMoreButton>
+        <LoadMoreButton disabled={isMoviesLoading} onClick={getMoreMovies}>
+          {isMoviesLoading ? 'Loading...' : 'Load More'}
+        </LoadMoreButton>
       </LoadMoreButtonContainer>
     </>
   );

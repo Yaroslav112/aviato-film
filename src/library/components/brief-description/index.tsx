@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import { Container, Wrapper } from './style';
-import { Question } from '../../../assets/question';
+import React, { FC, useState } from 'react';
+import { Container, Wrapper } from './styles';
+import { QuestionIcon } from '../../../assets/question';
 import BriefInformation from '../brief-information';
+import { BriefDescriptionTypes } from './types';
 
-const BriefDescription = ({ movie }: any) => {
-  const [isDescriptionShown, setIsDescriptionShow] = useState(false);
+const BriefDescription: FC<BriefDescriptionTypes> = ({ movie }) => {
+  const [isDescriptionShown, setIsDescriptionShown] = useState(false);
 
   return (
     <Wrapper>
       <Container
-        onMouseEnter={() => setIsDescriptionShow(true)}
-        onMouseLeave={() => setIsDescriptionShow(false)}
-        isDescriptionShown={isDescriptionShown}
+        onMouseEnter={() => setIsDescriptionShown(true)}
+        onMouseLeave={() => setIsDescriptionShown(false)}
       >
-        <Question />
+        <QuestionIcon />
       </Container>
-      {isDescriptionShown ? (
-        <BriefInformation movie={movie} />
-      ) : null}
+      {isDescriptionShown && <BriefInformation movie={movie} />}
     </Wrapper>
   );
 }
