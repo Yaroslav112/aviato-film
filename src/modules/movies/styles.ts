@@ -80,7 +80,7 @@ export const LoadMoreButton = styled.button`
 
 export const SpinnerContainer = styled.div`
   animation: ${rotateSpinnerAnimation} 4s infinite linear;
-  width: 50px;
+  width: 100px;
 `;
 
 

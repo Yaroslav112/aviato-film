@@ -15,5 +15,22 @@ export const GlobalStyle = createGlobalStyle`
   svg:hover {
     cursor: pointer;
   }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${Colors.white1};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${Colors.red};
+    border-radius: 4px;
+
+    &:hover {
+      background-color: ${Colors.red1};
+    }
+  }
 `
 

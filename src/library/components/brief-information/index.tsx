@@ -4,11 +4,11 @@ import ImdbIcon from '../../../assets/imdb';
 import { BriefDescriptionTypes } from '../brief-description/types';
 
 const BriefInformation: FC<BriefDescriptionTypes> = ({ movie }) => {
-  const briefTextLength: boolean | 0 | undefined = movie.overview?.length && movie?.overview?.length > 200;
-  const briefTextOverview: string | undefined = briefTextLength ? movie?.overview?.slice(0, 200) + '...' : movie.overview;
+  const briefTextLength: boolean | 0 | undefined = movie?.overview?.length && movie?.overview?.length > 200;
+  const briefTextOverview: string | undefined = briefTextLength ? movie?.overview?.slice(0, 200) + '...' : movie?.overview;
   const movieRating: string | number = movie?.vote_average?.toFixed(1) || 0;
   const dateObject: Date = new Date(movie?.release_date || '');
-  const releaseDate: number = dateObject.getFullYear() || 0;
+  const releaseDate: number = dateObject?.getFullYear() || 0;
 
   return (
     <>

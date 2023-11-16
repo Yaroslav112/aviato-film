@@ -1,4 +1,4 @@
-import { Container, HeaderWrapper, Logo, NavList, StyledInput, StyledLink } from './styles';
+import { Container, HeaderWrapper, Logo, LogoContainer, NavList, StyledInput, StyledLink } from './styles';
 import ImdbIcon from '../../../assets/imdb';
 import { ROUTES } from '../../constants/routes';
 import { useNavigate } from 'react-router-dom';
@@ -8,9 +8,9 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <div onClick={() => navigate(ROUTES.MOVIES)}>
+      <LogoContainer onClick={() => navigate(ROUTES.MOVIES)}>
         <Logo />
-      </div>
+      </LogoContainer>
       <Container>
         <NavList>
           <StyledLink to={ROUTES.MOVIES}>Movies</StyledLink>

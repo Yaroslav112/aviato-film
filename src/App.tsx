@@ -7,10 +7,11 @@ import Movies from './modules/movies';
 import TopImdb from './modules/top-imdb';
 import NotFound from './library/components/not-found';
 import { ROUTES } from './library/constants/routes';
+import CustomScroll from '../src/library/components/scroll-bar';
 
 function App() {
   return (
-    <div>
+    <CustomScroll>
       <GlobalStyle />
       <Router>
         <Routes>
@@ -23,7 +24,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    </div>
+    </CustomScroll>
   );
 }
 

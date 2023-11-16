@@ -27,8 +27,7 @@ const Movies:FC = () => {
 
   useEffect(() => {
     dispatch(resetMovies());
-    // dispatch(fetchAllMoviesRequest({ page: 1 }))
-  }, [location.pathname]);
+  }, [location.pathname !== 'movies']);
 
   useEffect(() => {
     setNextPage(2);
@@ -65,7 +64,7 @@ const Movies:FC = () => {
               <MovieTitle>{movie?.original_title}</MovieTitle>
             </ImgContainer>
           ))
-        ) :  <SpinnerIcon />}
+        ) : <SpinnerIcon />}
       </MovieContainer>
       <LoadMoreButtonContainer>
         <LoadMoreButton disabled={isMoviesLoading} onClick={getMoreMovies}>

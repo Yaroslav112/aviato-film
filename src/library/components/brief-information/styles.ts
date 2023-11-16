@@ -5,7 +5,7 @@ export const BriefInformationContainer = styled.div`
   background-color: ${Colors.black1};
   position: absolute;
   z-index: 1;
-  margin-left: 30px;
+  margin-left: 40px;
   border-radius: 5px;
   height: 300px;
   width: 385px;
