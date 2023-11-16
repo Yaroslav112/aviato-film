@@ -4,9 +4,9 @@ import {
   fetchAllMoviesFailure,
 } from './actions';
 import * as constants from './constants';
-import { ResponsePropTypes } from './types';
+import { PayloadPropTypes, ResponsePropTypes } from './types';
 
-function* fetchAllMovies({ payload }: any) {
+function* fetchAllMovies({ payload }: PayloadPropTypes) {
   const apiKey = '2efac316711e6f115edeae1c3cbdf500';
   const url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${payload.page}&api_key=${apiKey}`
 
@@ -21,6 +21,8 @@ function* fetchAllMovies({ payload }: any) {
 }
 
 export function* watchFetchAllMovies() {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   yield takeLatest(constants.FETCH_ALL_MOVIES_REQUEST, fetchAllMovies);
 }
 

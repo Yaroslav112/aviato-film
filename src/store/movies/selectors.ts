@@ -1,3 +1,3 @@
-import { MovieDataTypes, StateTypes } from './types';
+import { MovieDataPropTypes, StatePropTypes } from './types';
 
-export const getMovies = (state: StateTypes): MovieDataTypes[] => state?.moviesData?.movies;
+export const getMovies = (state: StatePropTypes): MovieDataPropTypes[] => state?.moviesData?.movies;

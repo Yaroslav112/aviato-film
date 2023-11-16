@@ -1,5 +1,5 @@
-import { MovieDataTypes } from '../../../store/movies/types';
+import { MovieDataPropTypes } from '../../../store/movies/types';
 
-export interface BriefDescriptionTypes {
-  movie: MovieDataTypes;
+export interface BriefDescriptionPropTypes {
+  movie: MovieDataPropTypes;
 }

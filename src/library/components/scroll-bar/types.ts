@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface CustomScrollProps {
+export interface CustomScrollPropTypes {
   children: ReactNode;
 }

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { ScrollContainer, ScrollContent } from './styles';
-import { CustomScrollProps } from './types';
+import { CustomScrollPropTypes } from './types';
 
-const CustomScroll: FC<CustomScrollProps> = ({ children }) => {
+const CustomScroll: FC<CustomScrollPropTypes> = ({ children }) => {
   return (
     <ScrollContainer>
       <ScrollContent>{children}</ScrollContent>

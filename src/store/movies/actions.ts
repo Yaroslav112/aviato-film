@@ -4,14 +4,14 @@ import {
   FETCH_ALL_MOVIES_SUCCESS,
   RESET_MOVIES,
 } from './constants';
-import { FetchMoviesRequestTypes, MovieDataTypes } from './types';
+import { FetchMoviesRequestPropTypes, MovieDataPropTypes } from './types';
 
-export const fetchAllMoviesRequest = (data: FetchMoviesRequestTypes) => ({
+export const fetchAllMoviesRequest = (data: FetchMoviesRequestPropTypes) => ({
   type: FETCH_ALL_MOVIES_REQUEST,
   payload: data,
 });
 
-export const fetchAllMoviesSuccess = (movies: MovieDataTypes) => ({
+export const fetchAllMoviesSuccess = (movies: MovieDataPropTypes) => ({
   type: FETCH_ALL_MOVIES_SUCCESS,
   movies,
 });

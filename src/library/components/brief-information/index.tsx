@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { BriefInformationContainer, RatingContainer } from './styles';
 import ImdbIcon from '../../../assets/imdb';
-import { BriefDescriptionTypes } from '../brief-description/types';
+import { BriefDescriptionPropTypes } from '../brief-description/types';
 
-const BriefInformation: FC<BriefDescriptionTypes> = ({ movie }) => {
+const BriefInformation: FC<BriefDescriptionPropTypes> = ({ movie }) => {
   const briefTextLength: boolean | 0 | undefined = movie?.overview?.length && movie?.overview?.length > 200;
   const briefTextOverview: string | undefined = briefTextLength ? movie?.overview?.slice(0, 200) + '...' : movie?.overview;
   const movieRating: string | number = movie?.vote_average?.toFixed(1) || 0;

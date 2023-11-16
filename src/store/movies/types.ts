@@ -1,4 +1,4 @@
-export interface MovieDataTypes {
+export interface MovieDataPropTypes {
   adult?: boolean,
   backdrop_path?: string,
   genre_ids?: [
@@ -22,23 +22,29 @@ export interface ResponsePropTypes {
   title: string;
   ok: boolean;
   json: any;
-  results: MovieDataTypes;
+  results: MovieDataPropTypes;
 }
 
 export type ActionPropTypes = {
   type: string,
-  movies: MovieDataTypes[],
+  movies: MovieDataPropTypes[],
   error: null,
 }
 
-export type FetchMoviesRequestTypes = {
+export type FetchMoviesRequestPropTypes = {
   page?: number
 }
 
-export type StateTypes = {
-  error: null | string,
+export type StatePropTypes = {
+  error: null | Error,
   loading: boolean,
   moviesData: {
-    movies: MovieDataTypes[],
+    movies: MovieDataPropTypes[],
   }
+}
+
+export interface PayloadPropTypes {
+  payload: {
+    page: number
+  };
 }

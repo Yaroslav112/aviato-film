@@ -13,15 +13,16 @@ import {
 import { getMovies as getMoviesSelector } from '../../store/movies/selectors';
 import { fetchAllMoviesRequest, resetMovies } from '../../store/movies/actions';
 import { MovieProps } from './types';
-import { MovieDataTypes } from '../../store/movies/types';
+import { MovieDataPropTypes } from '../../store/movies/types';
 import BriefDescription from '../../library/components/brief-description';
 import Header from '../../library/components/header';
 import { SpinnerIcon } from '../../assets/spinner';
 
-const Movies:FC = () => {
-  const movies: MovieDataTypes[] = useSelector(getMoviesSelector);
-  const [nextPage, setNextPage] = useState(2);
-  const [isMoviesLoading, setIsMoviesLoading] = useState(false);
+const Movies: FC = () => {
+  const movies: MovieDataPropTypes[] = useSelector(getMoviesSelector);
+  const [nextPage, setNextPage] = useState<number>(2);
+  const [isMoviesLoading, setIsMoviesLoading] = useState<boolean>(false);
+  const [hoveredMovie, setHoveredMovie] = useState<Key | null>(null);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -33,6 +34,14 @@ const Movies:FC = () => {
     setNextPage(2);
     dispatch(fetchAllMoviesRequest({ page: 1 }));
   }, []);
+
+  const handleMouseEnter = (index: Key | number) => {
+    setHoveredMovie(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredMovie(null);
+  };
 
   const getMoreMovies = () => {
     if (!isMoviesLoading) {
@@ -54,9 +63,13 @@ const Movies:FC = () => {
       <MovieContainer>
         {movies?.length ? (
           // todo used index instead of id due to api problems
-          movies?.map((movie: MovieProps, index: Key) => (
-            <ImgContainer key={index}>
-              <BriefDescription movie={movie} />
+          movies?.map((movie: MovieProps, index: Key | number) => (
+            <ImgContainer
+              key={index}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              {hoveredMovie === index && <BriefDescription movie={movie} />}
               <Image
                 src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}
                 alt={movie?.title}
@@ -64,7 +77,9 @@ const Movies:FC = () => {
               <MovieTitle>{movie?.original_title}</MovieTitle>
             </ImgContainer>
           ))
-        ) : <SpinnerIcon />}
+        ) : (
+          <SpinnerIcon />
+        )}
       </MovieContainer>
       <LoadMoreButtonContainer>
         <LoadMoreButton disabled={isMoviesLoading} onClick={getMoreMovies}>
