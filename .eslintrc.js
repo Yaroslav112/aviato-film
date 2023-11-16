@@ -61,14 +61,10 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     'quotes': ['error', 'single'],
     'jsx-a11y/label-has-for': 'off',
-    // "react/function-component-definition": "off",
-    // "jsx-a11y/click-events-have-key-events": "off",
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'import/no-useless-path-segments': 'off',
     'object-curly-spacing': ['error', 'always'],
-    // 'prefer-double-quotes': ['error', 'single', { avoidEscape: true }],
-
     'react/jsx-props-no-spreading': [
       2,
       {
