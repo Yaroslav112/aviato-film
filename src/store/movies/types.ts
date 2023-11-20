@@ -1,20 +1,22 @@
+import { SeriesPropTypes } from '../series/types';
+
 export interface MovieDataPropTypes {
   adult?: boolean,
   backdrop_path?: string,
   genre_ids?: [
     number
-  ]
-  id?: number
-  original_language?: string
-  original_title?: string
-  overview?: string
-  popularity?: number
-  poster_path?: string
-  release_date?: string
-  title?: string
-  video?: boolean
-  vote_average?: number
-  vote_count?: number
+  ],
+  id?: number,
+  original_language?: string,
+  original_title?: string,
+  overview?: string,
+  popularity?: number,
+  poster_path?: string,
+  release_date?: string,
+  title?: string,
+  video?: boolean,
+  vote_average?: number,
+  vote_count?: number,
 }
 
 export interface ResponsePropTypes {
@@ -22,10 +24,10 @@ export interface ResponsePropTypes {
   title: string;
   ok: boolean;
   json: any;
-  results: MovieDataPropTypes;
+  results: MovieDataPropTypes | SeriesPropTypes;
 }
 
-export type ActionPropTypes = {
+export type ActionMoviesPropTypes = {
   type: string,
   movies: MovieDataPropTypes[],
   error: null,
@@ -40,7 +42,11 @@ export type StatePropTypes = {
   loading: boolean,
   moviesData: {
     movies: MovieDataPropTypes[],
+  },
+  seriesData: {
+    series: SeriesPropTypes[],
   }
+
 }
 
 export interface PayloadPropTypes {

@@ -2,9 +2,10 @@ import { Container, HeaderWrapper, Logo, LogoContainer, NavList, StyledInput, St
 import ImdbIcon from '../../../assets/imdb';
 import { ROUTES } from '../../constants/routes';
 import { useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router';
 
 const Header = () => {
-  const navigate = useNavigate();
+  const navigate:NavigateFunction = useNavigate();
 
   return (
     <HeaderWrapper>

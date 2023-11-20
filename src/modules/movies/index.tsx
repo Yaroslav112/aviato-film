@@ -8,15 +8,14 @@ import {
   LoadMoreButtonContainer,
   MovieContainer,
   MovieTitle,
-  NavContainer,
 } from './styles';
 import { getMovies as getMoviesSelector } from '../../store/movies/selectors';
 import { fetchAllMoviesRequest, resetMovies } from '../../store/movies/actions';
 import { MovieProps } from './types';
 import { MovieDataPropTypes } from '../../store/movies/types';
 import BriefDescription from '../../library/components/brief-description';
-import Header from '../../library/components/header';
 import { SpinnerIcon } from '../../assets/spinner';
+import withNavigation from '../../library/hocs/with-navigation';
 
 const Movies: FC = () => {
   const movies: MovieDataPropTypes[] = useSelector(getMoviesSelector);
@@ -57,24 +56,22 @@ const Movies: FC = () => {
 
   return (
     <>
-      <NavContainer>
-        <Header />
-      </NavContainer>
       <MovieContainer>
         {movies?.length ? (
-          // todo used index instead of id due to api problems
+        // todo used index instead of id due to api problems
+          //another comp...
           movies?.map((movie: MovieProps, index: Key | number) => (
             <ImgContainer
               key={index}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              {hoveredMovie === index && <BriefDescription movie={movie} />}
+              {hoveredMovie === index && <BriefDescription entityDescription={movie} />}
               <Image
                 src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}
                 alt={movie?.title}
               />
-              <MovieTitle>{movie?.original_title}</MovieTitle>
+              <MovieTitle>{movie?.title}</MovieTitle>
             </ImgContainer>
           ))
         ) : (
@@ -90,4 +87,4 @@ const Movies: FC = () => {
   );
 };
 
-export default Movies;
+export default withNavigation(Movies);

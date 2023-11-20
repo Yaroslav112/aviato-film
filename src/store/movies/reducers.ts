@@ -4,7 +4,7 @@ import {
   FETCH_ALL_MOVIES_FAILURE,
   RESET_MOVIES,
 } from './constants';
-import { ActionPropTypes } from './types';
+import { ActionMoviesPropTypes } from './types';
 
 const initialState = {
   movies: [],
@@ -12,8 +12,7 @@ const initialState = {
   error: null,
 };
 
-export const moviesReducer = (state = initialState, action:ActionPropTypes) => {
-  console.log(action, 'action')
+export const moviesReducer = (state = initialState, action:ActionMoviesPropTypes) => {
   switch (action.type) {
   case FETCH_ALL_MOVIES_REQUEST:
     return { ...state, loading: true, error: null };

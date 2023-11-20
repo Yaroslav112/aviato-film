@@ -4,20 +4,20 @@ import { QuestionIcon } from '../../../assets/question';
 import BriefInformation from '../brief-information';
 import { BriefDescriptionPropTypes } from './types';
 
-const BriefDescription: FC<BriefDescriptionPropTypes> = ({ movie }) => {
+const BriefDescription: FC<BriefDescriptionPropTypes> = ({ entityDescription }) => {
   const [isDescriptionShown, setIsDescriptionShown] = useState<boolean>(false);
-  const onMovieHoverRef = useRef<number | null>(null);
+  const mediaContentRef = useRef<number | null>(null);
 
   const handleMouseEnter = () => {
-    onMovieHoverRef.current = window.setTimeout(() => {
+    mediaContentRef.current = window.setTimeout(() => {
       setIsDescriptionShown(true);
     }, 100);
   };
 
   const handleMouseLeave = () => {
-    if (onMovieHoverRef.current) {
-      window.clearTimeout(onMovieHoverRef.current);
-      onMovieHoverRef.current = null;
+    if (mediaContentRef.current) {
+      window.clearTimeout(mediaContentRef.current);
+      mediaContentRef.current = null;
     }
 
     setIsDescriptionShown(false);
@@ -31,7 +31,7 @@ const BriefDescription: FC<BriefDescriptionPropTypes> = ({ movie }) => {
       >
         <QuestionIcon />
       </Container>
-      {isDescriptionShown && <BriefInformation movie={movie} />}
+      {isDescriptionShown && <BriefInformation entityDescription={entityDescription} />}
     </Wrapper>
   );
 };
