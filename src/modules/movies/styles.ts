@@ -10,13 +10,13 @@ const rotateSpinnerAnimation = keyframes`
   }
 `;
 
-export const NavContainer = styled.div`
-  background-color: ${Colors.black};
-  position: sticky;
-  top: 0;
-`
+// export const NavContainer = styled.div`
+//   background-color: ${Colors.black};
+//   position: sticky;
+//   top: 0;
+// `
 
-export const MovieContainer = styled.span`
+export const Container = styled.span`
   display: flex;
   flex-wrap: wrap;
   justify-content: center; 
@@ -39,19 +39,21 @@ export const Image = styled.img`
   height: 400px;
 `
 
-export const MovieTitle = styled.p`
+export const ItemTitle = styled.p`
   color: ${Colors.white};
   font-size: 18px;
   font-family: Lato, serif;
   text-align: center;
-  max-width: 220px;
+  max-width: 226px;
   margin: 10px auto;
   white-space: break-spaces;
 `
 
 export const ImgContainer = styled.div`
   margin-bottom: 50px;
-  margin-right: 50px;
+  //margin-right: 50px;
+  margin-right: 20px;
+  margin-left: 15px;
   cursor: pointer;
   transition: border-color 0.3s;
   background: ${Colors.posterGradient};
@@ -67,13 +69,13 @@ export const LoadMoreButtonContainer = styled.div`
 `
 
 export const LoadMoreButton = styled.button`
-  background: ${( { disabled } ) => (disabled ? '' : `${Colors.buttonGradient}`)};
+  background: ${({ disabled }) => (disabled ? '' : `${Colors.buttonGradient}`)};
   padding: 10px;
   width: 200px;
   border-radius: 5px;
   color: ${Colors.white};
   border: none;
-  cursor: ${( { disabled } ) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   font-size: 20px;
   margin-bottom: 100px;
 `

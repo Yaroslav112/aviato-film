@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import LogoIcon from '../../../assets/logo';
 import styled from 'styled-components';
 import { Colors } from '../../constants/colors';
+import { StyledLinkPropTypes } from './types';
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -9,6 +10,8 @@ export const HeaderWrapper = styled.div`
   padding: 0 30px 0 30px;
   background-color: ${Colors.black};
   position: sticky;
+  top: 0;
+  z-index: 2;
 `
 
 export const Container = styled.nav`
@@ -24,10 +27,10 @@ export const NavList = styled.ul`
   margin: 0 auto;
 `
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)<StyledLinkPropTypes>`
   text-decoration: none;
   cursor: pointer;
-  color: ${Colors.white};
+  color: ${({ isActive }) => (isActive ? `${Colors.red}` : `${Colors.white}`)};
   font-size: 17px;
   transition: 0.1s;
   padding: 10px;
@@ -43,14 +46,11 @@ export const StyledLink = styled(Link)`
 `
 
 export const Logo = styled(LogoIcon)`
-  &:hover {
-    cursor: pointer;
-  }
 `
 
 export const StyledInput = styled.input`
   height: 30px;
-  width: 250px;
+  width: 350px;
   font-size: 20px;
   margin-left: 35px;
   border-radius: 5px;

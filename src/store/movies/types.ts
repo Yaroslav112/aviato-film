@@ -1,4 +1,5 @@
 import { SeriesPropTypes } from '../series/types';
+import { TopImdbPropTypes } from '../top-imdb/types';
 
 export interface MovieDataPropTypes {
   adult?: boolean,
@@ -24,7 +25,7 @@ export interface ResponsePropTypes {
   title: string;
   ok: boolean;
   json: any;
-  results: MovieDataPropTypes | SeriesPropTypes;
+  results: MovieDataPropTypes | SeriesPropTypes | TopImdbPropTypes;
 }
 
 export type ActionMoviesPropTypes = {
@@ -46,7 +47,9 @@ export type StatePropTypes = {
   seriesData: {
     series: SeriesPropTypes[],
   }
-
+  topImdbData: {
+    topImdb: TopImdbPropTypes[],
+  }
 }
 
 export interface PayloadPropTypes {
