@@ -8,7 +8,7 @@ export const BriefInformationContainer = styled.div`
   margin-left: 40px;
   border-radius: 5px;
   height: 300px;
-  width: 385px;
+  width: 360px;
   padding: 10px;
   line-height: 25px;
   font-family: Lato, serif;

@@ -18,7 +18,7 @@ function App() {
           <Route path={ROUTES.MAIN_PAGE} element={<Movies />} />
           <Route path={ROUTES.MOVIES} element={<Movies />} />
           <Route path={ROUTES.SERIES} element={<Series />} />
-          <Route path={ROUTES.CARTOONS} element={<Cartoons />} />
+          {/*<Route path={ROUTES.CARTOONS} element={<Cartoons />} />*/}
           <Route path={ROUTES.TOP_100} element={<TopImdb />} />
           <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
           <Route path="*" element={<NotFound />} />

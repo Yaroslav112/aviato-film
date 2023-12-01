@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Media Item renders correctly 1`] = `
+Array [
+  <div
+    className="sc-hKFymg klBRCO"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <img
+      alt="Some Name 1"
+      className="sc-gtsqUy bPbjIQ"
+      src="https://image.tmdb.org/t/p/w300/poster1.jpg"
+    />
+    <p
+      className="sc-dlniIP jzIpCH"
+    >
+      Some Name 1
+    </p>
+  </div>,
+  <div
+    className="sc-hKFymg klBRCO"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <img
+      alt="Some Name 2"
+      className="sc-gtsqUy bPbjIQ"
+      src="https://image.tmdb.org/t/p/w300/poster2.jpg"
+    />
+    <p
+      className="sc-dlniIP jzIpCH"
+    >
+      Some Name 2
+    </p>
+  </div>,
+]
+`;
